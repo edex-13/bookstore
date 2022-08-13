@@ -1,7 +1,9 @@
 <?php
 
-class Main{
+class Main extends Controller {
   public function __construct(){
+    parent::__construct();
+    $this->view->render('main/index');
     echo "<p>Nuevo controlador</p>";
   }
 
@@ -15,5 +17,3 @@ class Main{
     echo "<p>Error</p>";
   }
 }
-
-?>

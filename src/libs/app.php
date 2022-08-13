@@ -16,7 +16,14 @@ class App
     $url = explode('/', $url);
 
 
+    if(empty($url[0])){
+      $archivoController = 'src/controllers/main.php';
+      require_once $archivoController;
+      $controller = new Main();
+      return false;
+    }
     $fileController = 'src/controllers/' . $url[0] . '.php' ;
+    
 
     if (file_exists($fileController)) {
       require_once $fileController;
@@ -28,7 +35,7 @@ class App
       if (method_exists($controller, $method)) {
         $controller->{$method}();
       } else {
-        $controller->errors();
+        $controller = new Errors();
       }
     } else {
       $controller = new Errors();
