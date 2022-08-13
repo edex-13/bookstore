@@ -6,7 +6,6 @@ class App
 {
   public function __construct()
   {
-    echo "Nueva app";
 
     $url = isset($_GET['url']) ? $_GET['url'] : null;
 
@@ -14,6 +13,9 @@ class App
     $url = filter_var($url, FILTER_SANITIZE_URL);
 
     $url = explode('/', $url);
+
+    require_once 'src/libs/database.php';
+
 
 
     if(empty($url[0])){
