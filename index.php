@@ -2,6 +2,6 @@
 
   require_once 'src/libs/app.php';
 
-  $app = new app();
+  $app = new App();
 
 ?>
