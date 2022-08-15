@@ -5,15 +5,13 @@ class Main extends Controller {
     $this->db = new Database();
 
     parent::__construct();
-    $this->view->render('main/index');
+    
   }
 
   public function index(){
   }
-  public function saludo(){
-
-  
-
+  public function render(){
+    $this->view->render('main/index');
   }
   public function errors (){
     echo "<p>Error</p>";

@@ -15,14 +15,17 @@ class DataBase
 
     $this->conn = $conne;
   }
+  
 
   public function executeQuery($sql)
   {
-    $result = mysqli_query($this->conn, $sql);
-    if (!$result) {
-      die('Error: ' . mysqli_error($this->conn));
-    }
-    return $result;
+  
+      $result = mysqli_query($this->conn, $sql);
+      if (!$result) {
+        throw new Exception(mysqli_error($this->conn));
+      }
+      return $result;
+   
   }
 
   public function select($table, $where = null)
@@ -35,8 +38,14 @@ class DataBase
     }
     $result = $this->executeQuery($sql);
     if ($result) {
-      return $result;
+      $data = array();
+
+      while ($row = mysqli_fetch_array($result)) {
+        $data[] = $row;
+      }
+      return $data;
     } else {
+      
       return false;
     }
   }
