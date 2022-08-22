@@ -18,26 +18,32 @@
       
       
       <section class="section__form">
-        <form action="#" id="form-editorial" >
-          <h1 class="title">Editorial </h1>
-          <label for="name">
-            Nombre:
-            <input type="text" name="name" id="name" placeholder="Panamericana">
+        <form action="#" id="form-invoice" >
+          <h1 class="title">Facturas </h1>
+          <label for="client">
+            Nombre del cliente:
+            <input type="text" name="client" id="client" placeholder="Ederson Lopez ">
           </label>
-          <button type="button" onclick="crateEditorial()">Crear</button>
+          <label for="book">
+            Libros:
+            <select name="book" id="books">
+              <option value="">Seleccione un libro</option>
+            </select>
+          </label>
+          <button type="button" onclick="crateInvoices()">Crear</button>
         </form>
 
       </section>
       <section class="section__dataTable">
 
-        <div id="editorialsgi"></div>
+        <div id="invoices"></div>
       </section>
     </div>
 
   </main>
   <?php include("src/views/components/footer.php") ?>
   <script src="/bookstore/public/js/utils/data.js"></script>
-  <script src="/bookstore/public/js/editorials.js"></script>
+  <script src="/bookstore/public/js/invoices.js"></script>
 </body>
 
 </html>

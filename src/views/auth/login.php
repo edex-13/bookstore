@@ -18,26 +18,27 @@
       
       
       <section class="section__form">
-        <form action="#" id="form-editorial" >
-          <h1 class="title">Editorial </h1>
-          <label for="name">
-            Nombre:
-            <input type="text" name="name" id="name" placeholder="Panamericana">
+        <form action="/bookstore/auth/login" id="form-login" method="POST" >
+          <h1 class="title">Iniciar Sesión </h1>
+          <label for="username">
+            username:
+            <input type="text" name="username" id="username" placeholder="edex">
           </label>
-          <button type="button" onclick="crateEditorial()">Crear</button>
+          <label for="password">
+            password:
+            <input type="password" name="password" id="password" placeholder="*********">
+          </label>
+          <button type="sutmit" >Login</button>
         </form>
 
-      </section>
-      <section class="section__dataTable">
-
-        <div id="editorialsgi"></div>
       </section>
     </div>
 
   </main>
   <?php include("src/views/components/footer.php") ?>
-  <script src="/bookstore/public/js/utils/data.js"></script>
-  <script src="/bookstore/public/js/editorials.js"></script>
+
+  <!-- <script src="/bookstore/public/js/utils/data.js"></script>
+  <script src="/bookstore/public/js/authors.js"></script> -->
 </body>
 
 </html>

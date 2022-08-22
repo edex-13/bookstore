@@ -1,5 +1,5 @@
 const $form = document.getElementById("form-editorial");
-const $autors = document.getElementById("authors");
+const $editorials = document.getElementById("editorials");
 async function getEditorials() {
   const editorials = await getData(
     "http://localhost/bookstore/editorials/showData"
@@ -8,7 +8,7 @@ async function getEditorials() {
   if (editorials.length > 0) {
     renderDataTable(editorials);
   } else {
-    $form.innerHTML =
+    $editorials.innerHTML =
       "<p>No hay editoriales registradas</p>";
   }
 }
@@ -27,7 +27,7 @@ async function update(name, id) {
   $form.elements[1].onclick = () => {
     updateEditorial(id);
   };
-  $form.elements[1].textContent = "Update";
+  $form.elements[1].textContent = "Actualizar";
 }
 
 async function updateEditorial(id) {
@@ -37,6 +37,8 @@ async function updateEditorial(id) {
   await setData("http://localhost/bookstore/editorials/update/", data);
 
   getEditorials();
+  $form.reset();
+  $form.elements[1].textContent = "Crear";
 }
 
 async function deleteEditorial(id) {
@@ -60,7 +62,7 @@ function renderDataTable(data) {
     `;
     })
     .join("");
-  $autors.innerHTML = view;
+  $editorials.innerHTML = view;
 }
 
 getEditorials();

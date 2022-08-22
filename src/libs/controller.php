@@ -3,6 +3,15 @@
 class Controller {
   public function __construct() {
     $this->view = new View();
+    if (!isset($_SESSION)) {
+      session_start();
+    }
+
+  }
+  public function validateLogin (){
+    if (!isset($_SESSION['id'])) {
+      header('Location: ' . '/bookstore/auth/');
+    }
 
   }
 

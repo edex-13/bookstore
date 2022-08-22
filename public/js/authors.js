@@ -7,7 +7,7 @@ async function getAuthors() {
   if (authors.length > 0) {
     renderDataTable(authors);
   } else {
-    document.getElementById("authors").innerHTML =
+    $autors.innerHTML =
       "<p>No hay autores registrados</p>";
   }
 }
@@ -36,6 +36,7 @@ async function updateEditorial(id) {
 
   getAuthors();
   $form.reset();
+  $form.elements[1].textContent = "Crear";
 }
 
 async function deleteEditorial(id) {

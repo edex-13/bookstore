@@ -44,7 +44,7 @@ async function getBooks() {
     renderDataTable(books);
   }
   else {
-    document.getElementById("authors").innerHTML =
+    $autors.innerHTML =
       "<p>No hay autores registrados</p>";
   }
 }
@@ -58,8 +58,6 @@ async function deleteBook(id) {
 }
 
 async function update(id, title, author, editorial, isbn, price, description) {
-  console.log($form.elements)
-
   $form.elements['title'].value = title;
   $form.elements['isbn'].value = isbn;
   $form.elements['price'].value = price;
@@ -81,6 +79,7 @@ async function updateBook(id) {
 
   getBooks();
   $form.reset();
+  $form.elements[7].textContent = "Crear";
 }
 
 function renderDataTable(data) {

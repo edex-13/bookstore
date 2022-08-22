@@ -12,5 +12,13 @@
 
 <header class="header">
   <section>LOGO</section>
-  <section>Ederson Felipe Lopez</section>
+  <section>
+
+    <?php
+    if (!isset($_SESSION)) {
+      session_start();
+    }
+    echo $_SESSION["username"] ?? "<a href='/bookstore/auth/'>Inicia Sesion</a>";
+    ?>
+  </section>
 </header>

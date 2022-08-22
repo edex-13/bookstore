@@ -6,6 +6,11 @@ class Books extends Controller
   {
     $this->db = new Database();
     parent::__construct();
+    parent::validateLogin();
+    if (!isset($_SESSION)) {
+      session_start();
+    }
+
   }
   public function validations()
   {

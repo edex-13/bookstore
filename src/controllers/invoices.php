@@ -1,6 +1,6 @@
 <?php
 
-class Editorials extends Controller
+class Invoices extends Controller
 {
   public function __construct()
   {
@@ -14,12 +14,14 @@ class Editorials extends Controller
 
   public function render()
   {
-    $this->view->render('editorials/index');
+    $this->view->render('invoices/index');
   }
 
   public function showData()
   {
-    $data = $this->db->select_all('editorials');
+    $sql2 = "SELECT invoices.* , books.title as book  from invoices inner join books on invoices.id_book = invoices.id_book";
+
+    $data = $this->db->executeQuery($sql2, true);
     if ($data) {
       echo json_encode($data);
     } else {
@@ -29,8 +31,12 @@ class Editorials extends Controller
 
   public function create()
   {
-    if (empty($_REQUEST['name'])) {
-      echo json_encode(array('error' => 'No hay nombre para crear'));
+    if (empty($_REQUEST['client'])) {
+      echo json_encode(array('error' => 'No hay cliente para crear'));
+      return false;
+    }
+    if (empty($_REQUEST['book'])){
+      echo json_encode(array('error' => 'No hay libro para crear'));
       return false;
     }
     $id = rand(1, 100000);
@@ -38,11 +44,13 @@ class Editorials extends Controller
 
     $data = array(
       'id' => $id,
-      'name' => $_REQUEST['name']
+      'date' => date('Y-m-d'),
+      'client' => $_REQUEST['client'],
+      'id_book' => $_REQUEST['book'],
     );
 
     try {
-      $result = $this->db->insert('editorials', $data);
+      $result = $this->db->insert('invoices', $data);
       echo json_encode($result);
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
@@ -51,16 +59,21 @@ class Editorials extends Controller
 
   public function update()
   {
-    if (empty($_REQUEST['name'])) {
-      echo json_encode(array('error' => 'No hay nombre para actualizar'));
+    if (empty($_REQUEST['client'])) {
+      echo json_encode(array('error' => 'No hay cliente para actualizar'));
+      return false;
+    }
+    if (empty($_REQUEST['book'])){
+      echo json_encode(array('error' => 'No hay libro para actualizar'));
       return false;
     }
     $data = array(
-      'name' => $_REQUEST['name']
+      'client' => $_REQUEST['client'],
+      'id_book' => $_REQUEST['book']
     );
     $where = "id = '" . $_REQUEST['id'] . "'";
     try {
-      $result = $this->db->update('editorials', $data, $where);
+      $result = $this->db->update('invoices', $data, $where);
       echo json_encode($result);
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
@@ -74,7 +87,7 @@ class Editorials extends Controller
     }
     $id = $_REQUEST['id'];
     try {
-      $result = $this->db->delete('editorials', "id = '$id'");
+      $result = $this->db->delete('invoices', "id = '$id'");
       echo json_encode($result);
     } catch (Exception $e) {
       echo "Error: " . $e->getMessage();

@@ -6,6 +6,10 @@ class Authors extends Controller
   {
     $this->db = new Database();
     parent::__construct();
+    parent::validateLogin();
+    if (!isset($_SESSION)) {
+      session_start();
+    }
   }
 
   public function render()
@@ -80,7 +84,9 @@ class Authors extends Controller
 
   public function index()
   {
-    $this->render();
+    if (isset($_SESSION['id'])) {
+        $this->render();
+    }
   }
   public function errors()
   {
