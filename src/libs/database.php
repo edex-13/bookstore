@@ -17,15 +17,20 @@ class DataBase
   }
   
 
-  public function executeQuery($sql)
+  public function executeQuery($sql , $returnInArray = false)
   {
-  
       $result = mysqli_query($this->conn, $sql);
       if (!$result) {
         throw new Exception(mysqli_error($this->conn));
       }
+      if ($returnInArray) {
+        $data = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+          $data[] = $row;
+        }
+        return $data;
+      }
       return $result;
-   
   }
 
   public function select($table, $where = null)
@@ -36,14 +41,9 @@ class DataBase
     if ($where != null) {
       $sql .= " WHERE $where";
     }
-    $result = $this->executeQuery($sql);
+    $result = $this->executeQuery($sql , true);
     if ($result) {
-      $data = array();
-
-      while ($row = mysqli_fetch_array($result)) {
-        $data[] = $row;
-      }
-      return $data;
+      return $result;
     } else {
       
       return false;

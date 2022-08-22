@@ -26,7 +26,7 @@ class Authors extends Controller
   public function create()
   {
     if (empty($_REQUEST['name'])) {
-      print_r ($_REQUEST);
+      echo json_encode(array('error' => 'No hay nombre para crear'));
       return false;
     }
     $id = rand(1, 100000);

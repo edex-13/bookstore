@@ -18,25 +18,26 @@
       
       
       <section class="section__form">
-        <form action="#" id="form-editorial" >
+        <form action="#" id="form-author" >
           <h1 class="title">Autores </h1>
           <label for="name">
             Nombre:
-            <input type="text" name="name" id="name" placeholder="Panamericana">
+            <input type="text" name="name" id="name" placeholder="Gabriel Garcia Marquez">
           </label>
-          <button type="button" onclick="crateEditorial()">Crear</button>
+          <button type="button" onclick="crateAuthors()">Crear</button>
         </form>
 
       </section>
       <section class="section__dataTable">
 
-        <div id="editorials"></div>
+        <div id="authors"></div>
       </section>
     </div>
 
   </main>
   <?php include("src/views/components/footer.php") ?>
 
+  <script src="/bookstore/public/js/utils/data.js"></script>
   <script src="/bookstore/public/js/authors.js"></script>
 </body>
 

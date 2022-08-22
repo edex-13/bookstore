@@ -14,9 +14,11 @@ create table books(
   id varchar(100) not null primary key unique,
   isbn varchar(100) not null unique,
   title varchar(100) not null unique,
-  price float not null unique,
+  price float not null ,
   id_author varchar(100) not null,
   id_editorial varchar(100) not null,
+  `image` varchar(150) not null,
+  `description` varchar(1000) not null,
   FOREIGN KEY (id_author) REFERENCES authors (id),
   FOREIGN KEY (id_editorial) REFERENCES editorials (id)
 );
