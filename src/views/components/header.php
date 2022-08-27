@@ -205,7 +205,7 @@ if (!isset($_SESSION)) {
 
   <ul style="    border-bottom: 1px solid var(--very-light-pink);">
     <?php if (isset($_SESSION["username"]) &&  $_SESSION["id_role"] != 4) : ?>
-      <li><a href="/">Inicio</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="/books">Libros</a></li>
       <li><a href="/authors">Autores</a></li>
       <li><a href="/editorials">Editorial</a></li>
@@ -213,10 +213,11 @@ if (!isset($_SESSION)) {
 
     <?php else : ?>
       <li><a class="diferetente" href="/auth/">Iniciar Sesion</a></li>
-      <li><a href="/">Inicio</a></li>
+      <li><a href="/">Home</a></li>
     <?php endif ?>
   </ul>
-
+  
+<?php if (isset($_SESSION["username"]) ): ?>
   <ul>
     <li>
         <a href="/auth/profile" >Cambiar Contraseña</a>
@@ -233,6 +234,7 @@ if (!isset($_SESSION)) {
 
     </li>
   </ul>
+<?php endif ?>
 </div>
 <nav>
   <img src="/public/icons/icon_menu.svg" alt="menu" class="mobil_menu-open menu">
@@ -244,7 +246,7 @@ if (!isset($_SESSION)) {
 
     <ul>
       <?php if (isset($_SESSION["username"]) &&  $_SESSION["id_role"] != 4) : ?>
-        <li><a href="/">Inicio</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/books">Libros</a></li>
         <li><a href="/authors">Autores</a></li>
         <li><a href="/editorials">Editorial</a></li>
@@ -252,7 +254,7 @@ if (!isset($_SESSION)) {
 
       <?php else : ?>
         <li><a class="diferetente" href="/auth/">Iniciar Sesion</a></li>
-        <li><a href="/">Inicio</a></li>
+        <li><a href="/">Home</a></li>
       <?php endif ?>
     </ul>
   </div>
