@@ -13,7 +13,6 @@
 <body>
   <?php require_once "src/views/components/header.php" ?>
   <main class="main">
-    <?php require_once "src/views/components/menu.php" ?>
     <div class="container">
       
       
@@ -35,6 +34,8 @@
 
       </section>
       <section class="section__dataTable">
+        <h2>Lista de facturas creadas</h2>
+
 
         <div id="invoices"></div>
       </section>
@@ -43,6 +44,7 @@
   </main>
   <?php include("src/views/components/footer.php") ?>
   <script src="/bookstore/public/js/utils/data.js"></script>
+  <script src="/bookstore/public/js/utils/rol.js"></script>
   <script src="/bookstore/public/js/invoices.js"></script>
 </body>
 

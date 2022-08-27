@@ -1,3 +1,51 @@
+const $containerForm = document.querySelector(".section__form");
+if (validateRole("create")) {
+  $containerForm.innerHTML = `
+  <form action="#" id="form-book" >
+    <h1 class="title">Books </h1>
+    <div class="form-groups">
+      <div class="form-groud">
+        <label for="title">
+          Titulo:
+          <input type="text" name="title" id="title" placeholder="Cien años de soledad">
+        </label>
+        <label for="isbn">
+          isbn:
+          <input type="text" name="isbn" id="isbn" placeholder="453454654">
+        </label>
+        <label for="price">
+          Precio:
+          <input type="text" name="price" id="price" placeholder="10000">
+        </label>
+      </div>
+      <div class="form-groud">
+      <label for="editorials">
+        Editorial:
+        <select name="editorials" id="editorials">
+          <option value="">Seleccione una editorial</option>
+        </select>
+      </label>
+      <label for="authors">
+        Autor:
+        <select name="authors" id="authors">
+          <option value="">Seleccione un autor</option>
+        </select>
+      </label>
+      <label for="img">
+        Imagen:
+        <input type="file" name="img" id="img">
+      </label>
+      </div>
+    </div>
+    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    <button type="button" onclick="crateBook()">Crear</button>
+  </form>
+`;
+  getAuthors();
+  getEditorials();
+}
+getBooks();
+
 const $form = document.getElementById("form-book");
 const $editorials = document.getElementById("editorials");
 const $autors = document.getElementById("authors");
@@ -8,21 +56,18 @@ async function getEditorials() {
     "http://localhost/bookstore/editorials/showData"
   );
   if (authors.length > 0 && !editorials.error) {
-    appendSelect(editorials , $editorials , "Seleccione una editorial");
+    appendSelect(editorials, $editorials, "Seleccione una editorial");
   }
 }
 async function getAuthors() {
   const authors = await getData("http://localhost/bookstore/authors/showData");
   if (authors.length > 0 && !authors.error) {
-    appendSelect(authors , $autors , "Seleccione un autor");
+    appendSelect(authors, $autors, "Seleccione un autor");
   }
 }
 
-getAuthors();
-getEditorials();
-
-const appendSelect = (data , input , text ) => {
-  let view = "<option value=''> " + text +"</option>";
+const appendSelect = (data, input, text) => {
+  let view = "<option value=''> " + text + "</option>";
   console.log(data);
   data.forEach((author) => {
     view += `<option value="${author.id}">${author.name}</option>`;
@@ -30,22 +75,18 @@ const appendSelect = (data , input , text ) => {
   input.innerHTML = view;
 };
 
-
 async function crateBook() {
-  const data = new FormData(document.getElementById("form-book"));
+  const data = new FormData($form);
   await setData("http://localhost/bookstore/books/create/", data);
   getBooks();
 }
-getBooks();
 
 async function getBooks() {
   const books = await getData("http://localhost/bookstore/books/showData");
   if (books.length > 0) {
     renderDataTable(books);
-  }
-  else {
-    $autors.innerHTML =
-      "<p>No hay autores registrados</p>";
+  } else {
+    $books.innerHTML = "<p>No hay autores registrados</p>";
   }
 }
 
@@ -58,13 +99,13 @@ async function deleteBook(id) {
 }
 
 async function update(id, title, author, editorial, isbn, price, description) {
-  $form.elements['title'].value = title;
-  $form.elements['isbn'].value = isbn;
-  $form.elements['price'].value = price;
-  $form.elements['description'].value = description;
-  $form.elements['authors'].value = author;
-  $form.elements['editorials'].value = editorial;
-  $form.elements['img'].parentNode.classList.add("hide");
+  $form.elements["title"].value = title;
+  $form.elements["isbn"].value = isbn;
+  $form.elements["price"].value = price;
+  $form.elements["description"].value = description;
+  $form.elements["authors"].value = author;
+  $form.elements["editorials"].value = editorial;
+  $form.elements["img"].parentNode.classList.add("hide");
 
   $form.elements[7].onclick = () => {
     updateBook(id);
@@ -80,15 +121,18 @@ async function updateBook(id) {
   getBooks();
   $form.reset();
   $form.elements[7].textContent = "Crear";
+  $form.elements[7].onclick = () => {
+    crateBook();
+  }
 }
 
 function renderDataTable(data) {
   const view = data
     .map((book) => {
-    const stingBook = JSON.stringify(book)
-
       return `
-      <div>
+      <div class="card">
+              <div class="card__content">
+
         <p>${book.id}</p>
         <p>${book.title}</p>
         <p>${book.author}</p>
@@ -97,16 +141,32 @@ function renderDataTable(data) {
         <p>${book.price}</p>
         <p>${book.description}</p>
         <img src="${book.image}" alt="${book.title}" width="100">
-        <button onclick="update(
-          '${book.id}',
-          '${book.title}',
-          '${book.id_author}',
-          '${book.id_editorial}',
-          '${book.isbn}',
-          '${book.price}',
-          '${book.description}',
-        )">Update</button>
-        <button onclick="deleteBook('${book.id}')">Delete</button>
+        </div>
+        <div class="card__actions">
+
+        ${
+          validateRole("update")
+            ? `
+          
+            <button class="icon-update icon "  onclick="update(
+              '${book.id}',
+              '${book.title}',
+              '${book.id_author}',
+              '${book.id_editorial}',
+              '${book.isbn}',
+              '${book.price}',
+              '${book.description}',
+            )"></button>
+          `
+            : ""
+        }
+        ${
+          validateRole("delete")
+            ? `<button class="icon-delete icon " onclick="deleteBook('${book.id}')"></button>`
+            : ""
+        }
+        </div>
+
       </div>
     `;
     })

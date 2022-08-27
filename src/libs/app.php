@@ -21,7 +21,10 @@ class App
       $archivoController = 'src/controllers/main.php';
       require_once $archivoController;
       $controller = new Main();
-      $controller->render();
+      if (count($url) == 1){
+
+        $controller->render();
+      }
       return false;
     }
 

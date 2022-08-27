@@ -13,7 +13,10 @@ class Auth extends Controller
   {
     $this->view->render('auth/' . $name);
   }
-
+  public function profile ()
+  {
+    $this->render('profile');
+  }
   public function login()
   {
 
@@ -34,7 +37,7 @@ class Auth extends Controller
         $_SESSION['id_role'] = $result[0]['id_role'];
 
 
-        header('Location: ' . '/bookstore/auth/');
+        header('Location: ' . '/bookstore/');
       } else {
         echo json_encode(array('error' => 'Usuario o contraseña incorrectos'));
       }
@@ -48,7 +51,35 @@ class Auth extends Controller
     header('Location: ' . '/bookstore/');
   }
 
+  public function changePassword(){
+    parent::validateLogin();
 
+    if (empty($_REQUEST['password'])) {
+      echo json_encode(array('error' => 'No hay contraseña actual'));
+      return false;
+    }
+    if (empty($_REQUEST['newPassword'])) {
+      echo json_encode(array('error' => 'No hay nueva contraseña'));
+      return false;
+    }
+    $data = array(
+      'password' => $_REQUEST['password']
+    );
+    try {
+      $result = $this->db->select('users', "id = '" . $_SESSION['id'] . "' AND password = '" . $_REQUEST['password'] . "'");
+      if ($result) {
+        $data = array(
+          'password' => $_REQUEST['newPassword']
+        );
+        $result = $this->db->update('users', $data, "id = '" . $_SESSION['id'] . "'");
+        echo json_encode(array('success' => 'Contraseña actualizada'));
+      } else {
+        echo json_encode(array('error' => 'Contraseña actual incorrecta'));
+      }
+    } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
   public function index()
   {
   

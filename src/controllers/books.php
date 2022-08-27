@@ -6,7 +6,6 @@ class Books extends Controller
   {
     $this->db = new Database();
     parent::__construct();
-    parent::validateLogin();
     if (!isset($_SESSION)) {
       session_start();
     }
@@ -39,6 +38,12 @@ class Books extends Controller
 
   public function render()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('showPage')) {
+      header('Location: ' . '/bookstore/');
+      return false;
+    } 
     $this->view->render('books/index');
   }
 
@@ -55,7 +60,11 @@ class Books extends Controller
 
   public function create()
   {
+    parent::validateLogin();
 
+    if (!$this->validateRol('create')){
+      return false;
+    }
     $errors = $this->validations();
     if (!isset($_FILES['img']) || $_FILES['img']['error'] != 0 || empty($_FILES['img']['name'])) {
       $errors[] = 'No hay imagen para crear';
@@ -106,6 +115,11 @@ class Books extends Controller
 
   public function update()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('update')){
+      return false;
+    }
     $errors = $this->validations();
     if (!empty($errors)) {
       echo json_encode(array('error' => $errors));
@@ -133,6 +147,11 @@ class Books extends Controller
 
   public function delete()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('delete')){
+      return false;
+    }
     if (empty($_REQUEST['id'])) {
       return false;
     }

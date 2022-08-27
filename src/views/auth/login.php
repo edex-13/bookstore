@@ -36,9 +36,6 @@
 
   </main>
   <?php include("src/views/components/footer.php") ?>
-
-  <!-- <script src="/bookstore/public/js/utils/data.js"></script>
-  <script src="/bookstore/public/js/authors.js"></script> -->
 </body>
 
 </html>

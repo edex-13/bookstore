@@ -18,25 +18,20 @@
       
       
       <section class="section__form">
-        <form action="#" id="form-editorial" >
-          <h1 class="title">Editorial </h1>
-          <label for="name">
-            Nombre:
-            <input type="text" name="name" id="name" placeholder="Panamericana">
-          </label>
-          <button type="button" onclick="crateEditorial()">Crear</button>
-        </form>
+        
 
       </section>
       <section class="section__dataTable">
-
-        <div id="editorialsgi"></div>
+        <h2>Lista de editoriales creadas</h2>
+        <div id="editorials"></div>
       </section>
     </div>
 
   </main>
   <?php include("src/views/components/footer.php") ?>
   <script src="/bookstore/public/js/utils/data.js"></script>
+  <script src="/bookstore/public/js/utils/rol.js"></script>
+
   <script src="/bookstore/public/js/editorials.js"></script>
 </body>
 

@@ -15,26 +15,30 @@
   <main class="main">
     <?php require_once "src/views/components/menu.php" ?>
     <div class="container">
-
-
+      
+      
       <section class="section__form">
-        
+        <form action="#" id="form-password" method="POST" >
+          <h1 class="title">Cambiar contraseña </h1>
+          <label for="password">
+            Contraseña actual:
+            <input type="password" name="password" id="password" placeholder="*********">
+          </label>
+          <label for="newPassword">
+            Nueva contraseña:
+            <input type="password" name="newPassword" id="newPassword" placeholder="xxxxxxxx">
+          </label>
+          <button type="button" onclick="changePassword()">Aceptar</button>
+        </form>
 
-      </section>
-      <section class="section__dataTable">
-        <h2>Lista de libros creados</h2>
-
-
-        <div id="books"></div>
       </section>
     </div>
 
   </main>
   <?php include("src/views/components/footer.php") ?>
   <script src="/bookstore/public/js/utils/data.js"></script>
-  <script src="/bookstore/public/js/utils/rol.js"></script>
 
-  <script src="/bookstore/public/js/books.js"></script>
+  <script src="/bookstore/public/js/profile.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ class Authors extends Controller
   {
     $this->db = new Database();
     parent::__construct();
-    parent::validateLogin();
+    
     if (!isset($_SESSION)) {
       session_start();
     }
@@ -14,6 +14,12 @@ class Authors extends Controller
 
   public function render()
   {
+    parent::validateLogin();
+    if (!$this->validateRol('showPage')) {
+      $this->view->render('authors/index');
+      return false;
+    }
+
     $this->view->render('authors/index');
   }
 
@@ -29,6 +35,13 @@ class Authors extends Controller
 
   public function create()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('create')){
+      return false;
+    }
+    
+
     if (empty($_REQUEST['name'])) {
       echo json_encode(array('error' => 'No hay nombre para crear'));
       return false;
@@ -51,6 +64,14 @@ class Authors extends Controller
 
   public function update()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('update')){
+      return false;
+    }
+    
+
+
     if (empty($_REQUEST['name'])) {
       echo json_encode(array('error' => 'No hay nombre para actualizar'));
       return false;
@@ -69,6 +90,12 @@ class Authors extends Controller
 
   public function delete()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('delete')){
+      return false;
+    }
+
     if (empty($_REQUEST['id'])) {
       return false;
     }
@@ -85,7 +112,7 @@ class Authors extends Controller
   public function index()
   {
     if (isset($_SESSION['id'])) {
-        $this->render();
+      $this->render();
     }
   }
   public function errors()

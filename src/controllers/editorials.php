@@ -6,7 +6,7 @@ class Editorials extends Controller
   {
     $this->db = new Database();
     parent::__construct();
-    parent::validateLogin();
+
     if (!isset($_SESSION)) {
       session_start();
     }
@@ -14,6 +14,12 @@ class Editorials extends Controller
 
   public function render()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('showPage')) {
+      header('Location: ' . '/bookstore/');
+      return false;
+    }
     $this->view->render('editorials/index');
   }
 
@@ -29,6 +35,11 @@ class Editorials extends Controller
 
   public function create()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('create')){
+      return false;
+    }
     if (empty($_REQUEST['name'])) {
       echo json_encode(array('error' => 'No hay nombre para crear'));
       return false;
@@ -51,6 +62,11 @@ class Editorials extends Controller
 
   public function update()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('update')){
+      return false;
+    }
     if (empty($_REQUEST['name'])) {
       echo json_encode(array('error' => 'No hay nombre para actualizar'));
       return false;
@@ -69,6 +85,11 @@ class Editorials extends Controller
 
   public function delete()
   {
+    parent::validateLogin();
+
+    if (!$this->validateRol('delete')){
+      return false;
+    }
     if (empty($_REQUEST['id'])) {
       return false;
     }

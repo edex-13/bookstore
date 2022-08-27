@@ -18,17 +18,12 @@
       
       
       <section class="section__form">
-        <form action="#" id="form-author" >
-          <h1 class="title">Autores </h1>
-          <label for="name">
-            Nombre:
-            <input type="text" name="name" id="name" placeholder="Gabriel Garcia Marquez">
-          </label>
-          <button type="button" onclick="crateAuthors()">Crear</button>
-        </form>
+        
 
       </section>
       <section class="section__dataTable">
+        <h2>Lista de autores creados</h2>
+
 
         <div id="authors"></div>
       </section>
@@ -38,6 +33,7 @@
   <?php include("src/views/components/footer.php") ?>
 
   <script src="/bookstore/public/js/utils/data.js"></script>
+  <script src="/bookstore/public/js/utils/rol.js"></script>
   <script src="/bookstore/public/js/authors.js"></script>
 </body>
 
