@@ -47,10 +47,10 @@
   .section__dataTable > div {
     grid-template-columns: 1fr;
   }
-  .text_corto {
+  /* .text_corto {
     width: 200px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-  }
+  } */
 }
