@@ -16,7 +16,7 @@ class Invoices extends Controller
     parent::validateLogin();
 
     if (!$this->validateRol('showPage')) {
-      header('Location: ' . '/bookstore/');
+      header('Location: ' . '/');
       return false;
     }
     $this->view->render('invoices/index');
@@ -24,7 +24,7 @@ class Invoices extends Controller
 
   public function showData()
   {
-    $sql2 = "SELECT invoices.* , books.title as book  from invoices inner join books on invoices.id_book = invoices.id_book";
+    $sql2 = "SELECT invoices.* , books.title as book  from bbpejicnyxguh6h8nstd.invoices inner join bbpejicnyxguh6h8nstd.books on books.id = invoices.id_book";
 
     $data = $this->db->executeQuery($sql2, true);
     if ($data) {
@@ -58,6 +58,7 @@ class Invoices extends Controller
       'client' => $_REQUEST['client'],
       'id_book' => $_REQUEST['book'],
     );
+
 
     try {
       $result = $this->db->insert('invoices', $data);

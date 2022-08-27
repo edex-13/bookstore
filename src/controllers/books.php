@@ -41,7 +41,7 @@ class Books extends Controller
     parent::validateLogin();
 
     if (!$this->validateRol('showPage')) {
-      header('Location: ' . '/bookstore/');
+      header('Location: ' . '/');
       return false;
     } 
     $this->view->render('books/index');
@@ -85,7 +85,7 @@ class Books extends Controller
       mkdir($baseUrl, 0777, true);
     }
 
-    $route = '/bookstore/public/img/' . $id . $_FILES['img']['name'];
+    $route = '/public/img/' . $id . $_FILES['img']['name'];
 
 
     if (!move_uploaded_file($_FILES['img']['tmp_name'], $baseUrl . $id . $_FILES['img']['name'])) {

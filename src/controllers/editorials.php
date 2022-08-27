@@ -17,7 +17,7 @@ class Editorials extends Controller
     parent::validateLogin();
 
     if (!$this->validateRol('showPage')) {
-      header('Location: ' . '/bookstore/');
+      header('Location: ' . '/');
       return false;
     }
     $this->view->render('editorials/index');
@@ -51,7 +51,6 @@ class Editorials extends Controller
       'id' => $id,
       'name' => $_REQUEST['name']
     );
-
     try {
       $result = $this->db->insert('editorials', $data);
       echo json_encode($result);

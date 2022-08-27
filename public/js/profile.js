@@ -2,7 +2,7 @@ const $form = document.getElementById("form-password");
 async function changePassword() {
   const data = new FormData($form);
 
-  const result = await setData("http://localhost/bookstore/auth/changePassword/", data);
+  const result = await setData("/auth/changePassword/", data);
   if (result.success) {
     alert("Contraseña cambiada con éxito");
   } else {

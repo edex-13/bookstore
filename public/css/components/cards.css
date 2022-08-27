@@ -3,17 +3,41 @@
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
+  min-height: 200px;
   border-right: 1px solid rgb(239, 239, 239);
-  padding: 20px;
+  padding: 40px;
   align-items: center;
   justify-content: center;
+  background-color: rgb(247, 247, 247);
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 5px;
+}
+.card__image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .card__title {
   font-size: 16px;
   font-weight: 600;
   color: #272626;
   text-transform: uppercase;
+}
+.card__text{
+  text-align: start;
+  
+}
+.card__text span{
+  font-size: 16px;
+  font-weight: 600;
+  color: #272626;
+
+  /* poner espacio al final */
+  margin-right: 4px;
+
 }
 
 @media screen and (max-width: 768px) {

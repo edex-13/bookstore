@@ -52,7 +52,7 @@ class Controller {
   public function validateLogin (){
 
     if (!isset($_SESSION['id'])) {
-      header('Location: ' . '/bookstore/auth/');
+      header('Location: ' . '/auth/');
     }
 
   }

@@ -16,7 +16,7 @@ const $form = document.getElementById("form-editorial");
 const $editorials = document.getElementById("editorials");
 async function getEditorials() {
   const editorials = await getData(
-    "http://localhost/bookstore/editorials/showData"
+    "/editorials/showData"
   );
 
   if (editorials.length > 0) {
@@ -29,7 +29,7 @@ async function getEditorials() {
 async function crateEditorial() {
   const data = new FormData($form);
 
-  await setData("http://localhost/bookstore/editorials/create/", data);
+  await setData("/editorials/create/", data);
 
   getEditorials();
 }
@@ -46,7 +46,7 @@ async function updateEditorial(id) {
   const data = new FormData($form);
   data.append("id", id);
 
-  await setData("http://localhost/bookstore/editorials/update/", data);
+  await setData("/editorials/update/", data);
 
   getEditorials();
   $form.reset();
@@ -60,7 +60,7 @@ async function updateEditorial(id) {
 async function deleteEditorial(id) {
   const data = new FormData();
   data.append("id", id);
-  await setData("http://localhost/bookstore/editorials/delete/", data);
+  await setData("/editorials/delete/", data);
 
   getEditorials();
 }

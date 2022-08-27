@@ -5,25 +5,15 @@ if (!isset($_SESSION)) {
 
 ?>
 
-<link rel="stylesheet" href="/bookstore/public/css/components/menu.css">
+<link rel="stylesheet" href="/public/components/menu.css">
 
 <style>
-  :root {
-    --white: #FFFFFF;
-    --black: #000000;
-    --very-light-pink: #C7C7C7;
-    --text-input-field: #F7F7F7;
-    --hospital-green: #ACD9B2;
-    --sm: 14px;
-    --md: 16px;
-    --lg: 18px;
-  }
-
   nav {
     display: flex;
     justify-content: space-between;
     padding: 0 24px;
-    border-bottom: 1px solid var(--hospital-green);
+    border-bottom: 1px solid var(--very-light-pink);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.046805);
   }
 
   .menu {
@@ -49,6 +39,7 @@ if (!isset($_SESSION)) {
     align-items: center;
   }
 
+
   .navbar-left>ul {
     margin-left: 12px;
   }
@@ -56,7 +47,7 @@ if (!isset($_SESSION)) {
   .navbar-left>ul li a,
   .navbar-right>ul li a {
     text-decoration: none;
-    color: var(  --very-light-pink);
+    color: var(--very-light-pink);
     border: 1px solid var(--white);
     padding: 8px;
     border-radius: 8px;
@@ -70,6 +61,8 @@ if (!isset($_SESSION)) {
 
   .navbar-right {
     position: relative;
+    display: flex;
+    align-items: center;
   }
 
 
@@ -82,13 +75,24 @@ if (!isset($_SESSION)) {
     border-radius: 6px;
     padding: 20px 20px 0 20px;
     background-color: white;
-    box-shadow: -1px 1px 9px 0px rgb(0 0 0 / 20%);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.119789);
 
     position: absolute;
-    top: 50;
+    top: 70;
     right: 0;
+    z-index: 10;
 
   }
+
+  .hiden {
+    display: none;
+  }
+
+  .rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+  }
+
 
   .desktop-menu>ul {
     list-style: none;
@@ -122,6 +126,15 @@ if (!isset($_SESSION)) {
     display: inline-block;
   }
 
+  .navbar-email {
+    cursor: pointer;
+  }
+
+  body li>a.diferetente {
+    font-weight: 600;
+    color: #505050;
+  }
+
   @media (max-width: 640px) {
     .menu {
       display: block;
@@ -131,9 +144,7 @@ if (!isset($_SESSION)) {
       display: none;
     }
 
-    .navbar-email {
-      display: none;
-    }
+
   }
 </style>
 
@@ -142,41 +153,45 @@ if (!isset($_SESSION)) {
   <img src="./icons/icon_menu.svg" alt="menu" class="menu">
 
   <div class="navbar-left">
-    <img src="/bookstore/public/logo.png" alt="logo" class="logo">
+    <img src="/public/logo.png" alt="logo" class="logo">
 
     <ul>
-      <li><a href="/bookstore">Inicio</a></li>
       <?php if (isset($_SESSION["username"]) &&  $_SESSION["id_role"] != 4) : ?>
-        <li><a href="/bookstore/books">Libros</a></li>
-        <li><a href="/bookstore/authors">Autores</a></li>
-        <li><a href="/bookstore/editorials">Editorial</a></li>
-        <li><a href="/bookstore/invoices">Facturas</a></li>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/books">Libros</a></li>
+        <li><a href="/authors">Autores</a></li>
+        <li><a href="/editorials">Editorial</a></li>
+        <li><a href="/invoices">Facturas</a></li>
 
       <?php else : ?>
-        <li><a href="/bookstore/auth/">Iniciar Sesion</a></li>
+        <li><a class="diferetente" href="/auth/">Iniciar Sesion</a></li>
+        <li><a href="/">Inicio</a></li>
       <?php endif ?>
     </ul>
   </div>
 
   <div class="navbar-right">
-    <ul>
-      <li class="navbar-email">
-        <?php echo $_SESSION["username"] ?? ""; ?>
-      </li>
-    </ul>
-    <div class="desktop-menu">
+    <?php if (isset($_SESSION["username"])) : ?>
+
       <ul>
-        <li>
-          <a href="/bookstore/auth/profile" class="title">Cambiar Contraseña</a>
+        <li class="navbar-email">
+          <?php echo $_SESSION["username"] ?? ""; ?>
+          <img width="15" src="/public/icons/arrow.svg" alt="">
         </li>
-
-        
-
-
-        <li><a href="/bookstore/auth/logout">Cerrar Sesion</a></li>
-
-
       </ul>
-    </div>
+      <div class="desktop-menu hide">
+        <ul>
+          <li>
+            <a href="/auth/profile" class="title">Cambiar Contraseña</a>
+          </li>
+
+          <li><a href="/auth/logout">Cerrar Sesion</a></li>
+
+
+        </ul>
+      </div>
+    <?php endif ?>
   </div>
 </nav>
+
+<script src="/public/js/menu.js"></script>

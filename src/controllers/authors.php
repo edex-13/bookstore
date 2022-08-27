@@ -16,7 +16,7 @@ class Authors extends Controller
   {
     parent::validateLogin();
     if (!$this->validateRol('showPage')) {
-      $this->view->render('authors/index');
+      header('Location: ' . '/');
       return false;
     }
 
@@ -111,9 +111,7 @@ class Authors extends Controller
 
   public function index()
   {
-    if (isset($_SESSION['id'])) {
       $this->render();
-    }
   }
   public function errors()
   {

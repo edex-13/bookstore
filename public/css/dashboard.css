@@ -1,5 +1,4 @@
-
-.section__form{
+.section__form {
   width: 100%;
   min-height: 200px;
   display: flex;
@@ -8,7 +7,7 @@
   align-items: center;
 }
 
-.section__dataTable>div{
+.section__dataTable > div {
   display: grid;
   /* columnas responsive */
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
@@ -16,9 +15,8 @@
   padding: 20px;
   align-items: center;
   justify-content: center;
-
 }
-.section__dataTable>div>p{
+.section__dataTable > div > p {
   font-size: 16px;
   font-weight: 500;
   color: #272626;
@@ -27,8 +25,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .section__dataTable>div{
+  .section__dataTable > div {
     grid-template-columns: 1fr;
   }
 }
-  

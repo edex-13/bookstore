@@ -11,7 +11,7 @@ const appendSelect = (data, input, text) => {
 };
 
 async function getBooks() {
-  const books = await getData("http://localhost/bookstore/books/showData");
+  const books = await getData("/books/showData");
   if (books.length > 0 && !books.error) {
     appendSelect(books, $books, "Seleccione un libro");
   }
@@ -20,7 +20,7 @@ getBooks();
 
 async function getInvoices() {
   const invoices = await getData(
-    "http://localhost/bookstore/invoices/showData"
+    "/invoices/showData"
   );
 
   if (invoices.length > 0) {
@@ -33,7 +33,7 @@ async function getInvoices() {
 async function crateInvoices() {
   const data = new FormData($form);
 
-  await setData("http://localhost/bookstore/invoices/create/", data);
+  await setData("/invoices/create/", data);
 
   getInvoices();
 }
@@ -52,7 +52,7 @@ async function updateInvoices(id) {
   const data = new FormData($form);
   data.append("id", id);
 
-  await setData("http://localhost/bookstore/invoices/update/", data);
+  await setData("/invoices/update/", data);
 
   getInvoices();
   $form.reset();
@@ -63,7 +63,7 @@ async function updateInvoices(id) {
 async function deleteEditorial(id) {
   const data = new FormData();
   data.append("id", id);
-  await setData("http://localhost/bookstore/invoices/delete/", data);
+  await setData("/invoices/delete/", data);
 
   getInvoices();
 }

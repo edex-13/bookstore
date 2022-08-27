@@ -15,7 +15,7 @@ const $form = document.getElementById("form-author");
 const $autors = document.getElementById("authors");
 
 async function getAuthors() {
-  const authors = await getData("http://localhost/bookstore/authors/showData");
+  const authors = await getData("/authors/showData");
 
   if (authors.length > 0) {
     renderDataTable(authors);
@@ -26,7 +26,7 @@ async function getAuthors() {
 
 async function crateAuthors() {
   const data = new FormData($form);
-  await setData("http://localhost/bookstore/authors/create/", data);
+  await setData("/authors/create/", data);
   getAuthors();
   $form.elements[0].value = "";
 }
@@ -43,7 +43,7 @@ async function updateAuthor(id) {
   const data = new FormData($form);
   data.append("id", id);
 
-  await setData("http://localhost/bookstore/authors/update/", data);
+  await setData("/authors/update/", data);
 
   getAuthors();
   $form.reset();
@@ -56,7 +56,7 @@ async function updateAuthor(id) {
 async function deleteEditorial(id) {
   const data = new FormData();
   data.append("id", id);
-  await setData("http://localhost/bookstore/authors/delete/", data);
+  await setData("/authors/delete/", data);
   getAuthors();
 }
 

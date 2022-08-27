@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Roboto:wght@300;400;500;700;900&display=swap");
 @import "./components/cards.css";
 
 :root {
@@ -6,7 +6,7 @@
   --black: #000000;
   --very-light-pink: #c7c7c7;
   --text-input-field: #f7f7f7;
-  --hospital-green: #acd9b2;
+  --hospital-green: #eb3754;
   --sm: 14px;
   --md: 16px;
   --lg: 18px;
@@ -37,7 +37,7 @@ form .title {
 form {
   width: 100%;
   min-width: 350px;
-  max-width: 500px;
+  max-width: 400px;
   margin: 0 auto;
   margin: 60px 0;
   padding: 40px;
@@ -66,25 +66,25 @@ textarea {
   width: 100%;
   height: 120px;
   margin-bottom: 10px;
-  border: 1px solid #d3d0d0;
-  border-radius: 5px;
+
   padding: 10px;
   resize: none;
+  border: 2px solid #dadada;
+  background: #f7f7f7;
+  border-radius: 6px;
 }
 
 input,
 select {
+  border: 2px solid #dadada;
+  background: #f7f7f7;
+  border-radius: 6px;
   width: 100%;
-  max-width: 250px;
-  border: none;
   padding: 5px;
   outline: none;
   font-size: 16px;
   font-weight: 500;
   color: #000000;
-  border: 1px solid #d3d0d0;
-  border-radius: 3px;
-  background-color: #fcfcfc;
   transition: border 0.3s ease 0s;
 }
 input:focus {
@@ -126,7 +126,7 @@ button:hover:not(.icon) {
   background-color: transparent;
 }
 .icon-delete {
-  background-image: url("/bookstore/public/icons/delete.svg");
+  background-image: url("/public/icons/delete.svg");
   background-color: #f75d5d;
 }
 .icon-delete:hover {
@@ -134,7 +134,7 @@ button:hover:not(.icon) {
 }
 
 .icon-update {
-  background-image: url("/bookstore/public/icons/update.svg");
+  background-image: url("/public/icons/update.svg");
   background-color: #5d97f7;
 }
 .icon-update:hover {
@@ -163,3 +163,31 @@ button:hover:not(.icon) {
     box-shadow: none;
   }
 }
+
+
+    .main_sections {
+        margin: 80px 0px;
+        display: grid;
+        grid-template-columns: 1fr 0.2fr 1fr 1fr 0.2fr 0.2fr 2fr 2fr 0.5fr ;
+        gap: 5px;
+        row-gap: 20px;
+        text-align: center;
+    }
+
+    .main_sections img {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        
+    }
+
+  
+    .main_sections>div:not(.no) {
+        background: rgb(32, 35, 41);
+        font-size: 20px;
+        font-weight: 700;
+        padding: 20px;
+
+        color: #d3d0d0;
+    }
+  

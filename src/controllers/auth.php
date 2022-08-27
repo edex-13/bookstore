@@ -15,6 +15,8 @@ class Auth extends Controller
   }
   public function profile ()
   {
+    parent::validateLogin();
+
     $this->render('profile');
   }
   public function login()
@@ -37,7 +39,7 @@ class Auth extends Controller
         $_SESSION['id_role'] = $result[0]['id_role'];
 
 
-        header('Location: ' . '/bookstore/');
+        header('Location: ' . '/');
       } else {
         echo json_encode(array('error' => 'Usuario o contraseña incorrectos'));
       }
@@ -48,7 +50,7 @@ class Auth extends Controller
   public function logout()
   {
     session_destroy();
-    header('Location: ' . '/bookstore/');
+    header('Location: ' . '/');
   }
 
   public function changePassword(){

@@ -53,14 +53,14 @@ const $books = document.getElementById("books");
 
 async function getEditorials() {
   const editorials = await getData(
-    "http://localhost/bookstore/editorials/showData"
+    "/editorials/showData"
   );
   if (authors.length > 0 && !editorials.error) {
     appendSelect(editorials, $editorials, "Seleccione una editorial");
   }
 }
 async function getAuthors() {
-  const authors = await getData("http://localhost/bookstore/authors/showData");
+  const authors = await getData("/authors/showData");
   if (authors.length > 0 && !authors.error) {
     appendSelect(authors, $autors, "Seleccione un autor");
   }
@@ -77,12 +77,14 @@ const appendSelect = (data, input, text) => {
 
 async function crateBook() {
   const data = new FormData($form);
-  await setData("http://localhost/bookstore/books/create/", data);
+  await setData("/books/create/", data);
   getBooks();
+  $form.reset();
+
 }
 
 async function getBooks() {
-  const books = await getData("http://localhost/bookstore/books/showData");
+  const books = await getData("/books/showData");
   if (books.length > 0) {
     renderDataTable(books);
   } else {
@@ -93,7 +95,7 @@ async function getBooks() {
 async function deleteBook(id) {
   const data = new FormData();
   data.append("id", id);
-  await setData("http://localhost/bookstore/books/delete/", data);
+  await setData("/books/delete/", data);
 
   getBooks();
 }
@@ -116,35 +118,57 @@ async function updateBook(id) {
   const data = new FormData($form);
   data.append("id", id);
 
-  await setData("http://localhost/bookstore/books/update/", data);
+  await setData("/books/update/", data);
 
   getBooks();
   $form.reset();
   $form.elements[7].textContent = "Crear";
   $form.elements[7].onclick = () => {
     crateBook();
-  }
+  };
 }
 
 function renderDataTable(data) {
-  const view = data
+  let view = `<section class="main_sections">
+            <div>Titulo</div>
+            <div>Id</div>
+            <div>Autor</div>
+            <div>Editorial</div>
+            <div>isbn</div>
+            <div>Precio</div>
+            <div>Descripción</div>
+            <div>Img</div>
+            <div>Acciones</div>
+        `;
+  view += data
     .map((book) => {
       return `
-      <div class="card">
-              <div class="card__content">
 
-        <p>${book.id}</p>
-        <p>${book.title}</p>
-        <p>${book.author}</p>
-        <p>${book.editorial}</p>
-        <p>${book.isbn}</p>
-        <p>${book.price}</p>
-        <p>${book.description}</p>
-        <img src="${book.image}" alt="${book.title}" width="100">
-        </div>
-        <div class="card__actions">
 
-        ${
+
+          <h3 class="card__title">${book.title}</h3>
+          <p class="card__text">
+            ${book.id}
+          </p>
+          <p class="card__text">
+            ${book.author}
+          </p>
+          <p class="card__text">
+            ${book.editorial}
+          </p>
+          <p class="card__text">
+            ${book.isbn}
+          </p>
+          <p class="card__text">
+            ${book.price}
+          </p>
+          <p class="card__text">
+            ${book.description}
+          </p>
+          <img  src="${book.image}" alt="${book.title}" width="100">
+       
+       <div class="no"> 
+       ${
           validateRole("update")
             ? `
           
@@ -165,11 +189,15 @@ function renderDataTable(data) {
             ? `<button class="icon-delete icon " onclick="deleteBook('${book.id}')"></button>`
             : ""
         }
-        </div>
+       </div>
 
-      </div>
+        
+      
+
     `;
     })
     .join("");
+
+    view += "</section>";
   $books.innerHTML = view;
 }
