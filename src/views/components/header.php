@@ -153,7 +153,9 @@ if (!isset($_SESSION)) {
   <img src="./icons/icon_menu.svg" alt="menu" class="menu">
 
   <div class="navbar-left">
-    <img src="/public/logo.png" alt="logo" class="logo">
+    <a href="/">
+      <img src="/public/logo.png" alt="logo" class="logo" >
+    </a>
 
     <ul>
       <?php if (isset($_SESSION["username"]) &&  $_SESSION["id_role"] != 4) : ?>

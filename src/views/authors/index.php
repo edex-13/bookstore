@@ -30,7 +30,7 @@
     </div>
 
   </main>
-  <?php include("/src/views/components/footer.php") ?>
+  <?php include("src/views/components/footer.php") ?>
 
   <script src="/public/js/utils/data.js"></script>
   <script src="/public/js/utils/rol.js"></script>

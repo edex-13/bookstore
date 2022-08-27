@@ -162,7 +162,7 @@ function renderDataTable(data) {
           <p class="card__text">
             ${book.price}
           </p>
-          <p class="card__text">
+          <p class="card__text text_corto">
             ${book.description}
           </p>
           <img  src="${book.image}" alt="${book.title}" width="100">

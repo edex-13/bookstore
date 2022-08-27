@@ -6,6 +6,25 @@
   justify-content: center;
   align-items: center;
 }
+.section__dataTable-books {
+  width: 100%;
+  min-height: 200px;
+  overflow: hidden;
+  margin-top: 30px;
+  height: 85vh;
+  background: #ffffff;
+  border: 1px solid #dfe0eb;
+  border-radius: 8px;
+}
+#books {
+  overflow: hidden;
+
+  max-width: 1200px;
+  margin-top: 10px;
+  max-height: calc(100% - 65px);
+  overflow: auto;
+  margin: 20px auto;
+}
 
 .section__dataTable > div {
   display: grid;
@@ -27,5 +46,11 @@
 @media screen and (max-width: 768px) {
   .section__dataTable > div {
     grid-template-columns: 1fr;
+  }
+  .text_corto {
+    width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
