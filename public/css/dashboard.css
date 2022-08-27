@@ -47,10 +47,13 @@
   .section__dataTable > div {
     grid-template-columns: 1fr;
   }
-  /* .text_corto {
+}
+
+@media screen and (max-width: 480px) {
+  .text_corto {
     width: 200px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-  } */
+  }
 }

@@ -64,8 +64,54 @@ if (!isset($_SESSION)) {
     display: flex;
     align-items: center;
   }
+  
+  .mobile-menu {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: var(--white);
+    padding: 24px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  .menuActive {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease-in-out;
+  }
 
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+    /* margin-bottom: 24px; */
+  }
 
+  .mobile-menu ul {
+    padding: 0;
+    margin: 24px 0 0;
+    list-style: none;
+  }
+
+ 
+
+  .mobile-menu ul li {
+    margin-bottom: 24px;
+  }
+
+  .email {
+    font-size: var(--sm);
+    font-weight: 300 !important;
+  }
+
+  .sign-out {
+    font-size: var(--sm);
+    color: var(--hospital-green) !important;
+  }
 
 
   .desktop-menu {
@@ -125,6 +171,10 @@ if (!isset($_SESSION)) {
     margin-bottom: 20px;
     display: inline-block;
   }
+  .mobil_menu-close{
+    margin-top: 10px;
+    margin-left: calc(100% - 15px);
+  }
 
   .navbar-email {
     cursor: pointer;
@@ -143,18 +193,53 @@ if (!isset($_SESSION)) {
     .navbar-left ul {
       display: none;
     }
-
+    .navbar-email {
+      display: none;
+    }
 
   }
 </style>
 
+<div class="mobile-menu">
+  <img src="/public/icons/icon_close.svg" alt="menu" class="mobil_menu-close">
 
+  <ul style="    border-bottom: 1px solid var(--very-light-pink);">
+    <?php if (isset($_SESSION["username"]) &&  $_SESSION["id_role"] != 4) : ?>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/books">Libros</a></li>
+      <li><a href="/authors">Autores</a></li>
+      <li><a href="/editorials">Editorial</a></li>
+      <li><a href="/invoices">Facturas</a></li>
+
+    <?php else : ?>
+      <li><a class="diferetente" href="/auth/">Iniciar Sesion</a></li>
+      <li><a href="/">Inicio</a></li>
+    <?php endif ?>
+  </ul>
+
+  <ul>
+    <li>
+        <a href="/auth/profile" >Cambiar Contraseña</a>
+    </li>
+
+  </ul>
+
+  <ul>
+    <li>
+      <a href="#" class="email"><?php echo $_SESSION["username"] ?? ""; ?></a>
+    </li>
+    <li>
+    <li><a href="/auth/logout" class="sign-out">Cerrar Sesion</a></li>
+
+    </li>
+  </ul>
+</div>
 <nav>
-  <img src="./icons/icon_menu.svg" alt="menu" class="menu">
+  <img src="/public/icons/icon_menu.svg" alt="menu" class="mobil_menu-open menu">
 
   <div class="navbar-left">
     <a href="/">
-      <img src="/public/logo.png" alt="logo" class="logo" >
+      <img src="/public/logo.png" alt="logo" class="logo">
     </a>
 
     <ul>
