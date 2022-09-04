@@ -9,11 +9,17 @@ if (!isset($_SESSION)) {
 
 <style>
   nav {
+
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     padding: 0 24px;
-    border-bottom: 1px solid var(--very-light-pink);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.046805);
+  }
+
+  .content {
+    width: 90%;
+    margin: 0 auto;
   }
 
   .menu {
@@ -64,7 +70,7 @@ if (!isset($_SESSION)) {
     display: flex;
     align-items: center;
   }
-  
+
   .mobile-menu {
     z-index: 100;
     position: absolute;
@@ -78,6 +84,7 @@ if (!isset($_SESSION)) {
     opacity: 0;
     transition: all 0.3s ease-in-out;
   }
+
   .menuActive {
     opacity: 1;
     visibility: visible;
@@ -97,7 +104,7 @@ if (!isset($_SESSION)) {
     list-style: none;
   }
 
- 
+
 
   .mobile-menu ul li {
     margin-bottom: 24px;
@@ -171,7 +178,8 @@ if (!isset($_SESSION)) {
     margin-bottom: 20px;
     display: inline-block;
   }
-  .mobil_menu-close{
+
+  .mobil_menu-close {
     margin-top: 10px;
     margin-left: calc(100% - 15px);
   }
@@ -193,6 +201,7 @@ if (!isset($_SESSION)) {
     .navbar-left ul {
       display: none;
     }
+
     .navbar-email {
       display: none;
     }
@@ -216,71 +225,72 @@ if (!isset($_SESSION)) {
       <li><a href="/">Home</a></li>
     <?php endif ?>
   </ul>
-  
-<?php if (isset($_SESSION["username"]) ): ?>
-  <ul>
-    <li>
-        <a href="/auth/profile" >Cambiar Contraseña</a>
-    </li>
 
-  </ul>
+  <?php if (isset($_SESSION["username"])) : ?>
+    <ul>
+      <li>
+        <a href="/auth/profile">Cambiar Contraseña</a>
+      </li>
 
-  <ul>
-    <li>
-      <a href="#" class="email"><?php echo $_SESSION["username"] ?? ""; ?></a>
-    </li>
-    <li>
-    <li><a href="/auth/logout" class="sign-out">Cerrar Sesion</a></li>
-
-    </li>
-  </ul>
-<?php endif ?>
-</div>
-<nav>
-  <img src="/public/icons/icon_menu.svg" alt="menu" class="mobil_menu-open menu">
-
-  <div class="navbar-left">
-    <a href="/">
-      <img src="/public/logo.png" alt="logo" class="logo">
-    </a>
+    </ul>
 
     <ul>
-      <?php if (isset($_SESSION["username"]) &&  $_SESSION["id_role"] != 4) : ?>
-        <li><a href="/">Home</a></li>
-        <li><a href="/books">Libros</a></li>
-        <li><a href="/authors">Autores</a></li>
-        <li><a href="/editorials">Editorial</a></li>
-        <li><a href="/invoices">Facturas</a></li>
+      <li>
+        <a href="#" class="email"><?php echo $_SESSION["username"] ?? ""; ?></a>
+      </li>
+      <li>
+      <li><a href="/auth/logout" class="sign-out">Cerrar Sesion</a></li>
 
-      <?php else : ?>
-        <li><a class="diferetente" href="/auth/">Iniciar Sesion</a></li>
-        <li><a href="/">Home</a></li>
-      <?php endif ?>
+      </li>
     </ul>
-  </div>
+  <?php endif ?>
+</div>
+<nav>
+    <img src="/public/icons/icon_menu.svg" alt="menu" class="mobil_menu-open menu">
 
-  <div class="navbar-right">
-    <?php if (isset($_SESSION["username"])) : ?>
+    <div class="navbar-left">
+      <a href="/">
+        <img src="/public/logo.png" alt="logo" class="logo">
+      </a>
 
       <ul>
-        <li class="navbar-email">
-          <?php echo $_SESSION["username"] ?? ""; ?>
-          <img width="15" src="/public/icons/arrow.svg" alt="">
-        </li>
+        <?php if (isset($_SESSION["username"]) &&  $_SESSION["id_role"] != 4) : ?>
+          <li><a href="/">Home</a></li>
+          <li><a href="/books">Libros</a></li>
+          <li><a href="/authors">Autores</a></li>
+          <li><a href="/editorials">Editorial</a></li>
+          <li><a href="/invoices">Facturas</a></li>
+
+        <?php else : ?>
+          <li><a class="diferetente" href="/auth/">Iniciar Sesion</a></li>
+          <li><a href="/">Home</a></li>
+        <?php endif ?>
       </ul>
-      <div class="desktop-menu hide">
+    </div>
+
+    <div class="navbar-right">
+      <?php if (isset($_SESSION["username"])) : ?>
+
         <ul>
-          <li>
-            <a href="/auth/profile" class="title">Cambiar Contraseña</a>
+          <li class="navbar-email">
+            <?php print_r($_SESSION)  ?? ""; ?>
+            <img width="15" src="/public/icons/arrow.svg" alt="">
           </li>
-
-          <li><a href="/auth/logout">Cerrar Sesion</a></li>
-
-
         </ul>
-      </div>
-    <?php endif ?>
-  </div>
+        <div class="desktop-menu hide">
+          <ul>
+            <li>
+              <a href="/auth/profile" class="title">Cambiar Contraseña</a>
+            </li>
+
+            <li><a href="/auth/logout">Cerrar Sesion</a></li>
+
+
+          </ul>
+        </div>
+      <?php endif ?>
+    </div>
+
 </nav>
 
 <script src="/public/js/menu.js"></script>
