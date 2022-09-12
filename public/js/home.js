@@ -1,4 +1,5 @@
 const $books = document.querySelector(".books");
+const $cards_table = document.querySelector(".cards_table");
 const a = () => {
   const swiper = new Swiper(".swiper-container", {
     navigation: {
@@ -50,6 +51,7 @@ getBooks();
 
 function render(books) {
   let view = "";
+  let view2;
   books.forEach((book) => {
     view += `
       <article class="book swiper-slide">
@@ -67,9 +69,29 @@ function render(books) {
         </section>
       </article>
     `;
+    view2 +=`
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    `
   });
   $books.innerHTML = view;
+  $cards_table.innerHTML = view2;
   a();
+
 
 
   
