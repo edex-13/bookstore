@@ -8,12 +8,14 @@ class View
 
   public function render($nombre)
   {
+    
+    require 'src/views/' . $nombre . '.php';
+
     echo '
       <script>
-        const rol = '. (isset($_SESSION['id_role']) ?: ""). '
+        const rol = '. (isset($_SESSION) ?: ""). '
       </script>'
     ;
-    require 'src/views/' . $nombre . '.php';
     
   }
 }

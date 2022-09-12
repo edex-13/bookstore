@@ -273,7 +273,7 @@ if (!isset($_SESSION)) {
 
         <ul>
           <li class="navbar-email">
-            <?php print_r($_SESSION)  ?? ""; ?>
+            <?php print_r($_SESSION["username"])  ?? ""; ?>
             <img width="15" src="/public/icons/arrow.svg" alt="">
           </li>
         </ul>
