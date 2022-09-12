@@ -70,4 +70,7 @@ function render(books) {
   });
   $books.innerHTML = view;
   a();
+
+
+  
 }

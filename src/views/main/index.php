@@ -43,19 +43,24 @@
         </article>
       </div>
     </section>
-    <div id="books"></div>
+    <div class="container">
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-container mySwiper">
+          <div class="swiper-wrapper books">
+          </div>
+        </div>
+    </div>
+
+    <div class="cover parallax"><p>You are going to fall in love with the food <span>Lorem ipsum dolor sit amet.</span></p></div>
+
 
   </main>
-  <div class="container">
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-container mySwiper">
-      <div class="swiper-wrapper books">
+ 
 
-      </div>
-    </div>
-  </div>
+
+
 
   <?php include("src/views/components/footer.php") ?>
       <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

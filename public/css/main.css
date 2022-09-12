@@ -360,3 +360,20 @@ button:hover:not(.icon) {
     display: none;
   }
 }
+
+
+.cover.parallax {
+    background-attachment: ("https://www.upb.edu.co/es/imagenes/imgtipod-blgleyendosinseparador-megustarialeer-1464204951973.jpg");
+    position: relative;
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+}
