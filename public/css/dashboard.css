@@ -1,6 +1,6 @@
 .section__form {
   width: 100%;
-  min-height: 200px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
