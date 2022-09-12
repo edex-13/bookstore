@@ -363,7 +363,8 @@ button:hover:not(.icon) {
 
 
 .cover.parallax {
-    background-attachment: ("https://www.upb.edu.co/es/imagenes/imgtipod-blgleyendosinseparador-megustarialeer-1464204951973.jpg");
+    background-attachment: fixed;
+    background-image: url("https://www.upb.edu.co/es/imagenes/imgtipod-blgleyendosinseparador-megustarialeer-1464204951973.jpg");
     position: relative;
 }
 
@@ -373,7 +374,28 @@ button:hover:not(.icon) {
     position: absolute;
     left: 0px;
     right: 0px;
-    min-height: 400px;
+    max-height: 400px;
     background-size: cover;
     background-position: center;
+}
+
+.cover.parallax > p {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 2em;
+    position: absolute;
+    letter-spacing: 8px;
+    width: auto;
+    bottom: 0px;
+    left: 10px;
+    text-align: center;
+    color: rgba(215,218,219,0.7);
+    background-color: rgba(235, 55, 84 , 0.8);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    left: 0px;
+    text-align: right;
 }
