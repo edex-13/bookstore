@@ -1,5 +1,5 @@
 const $books = document.querySelector(".books");
-const $cards_table = document.querySelector(".cards_table");
+const $cards_table = document.querySelector("#cards_table");
 const a = () => {
   const swiper = new Swiper(".swiper-container", {
     navigation: {
