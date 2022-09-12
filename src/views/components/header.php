@@ -131,7 +131,7 @@ if (!isset($_SESSION)) {
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.119789);
 
     position: absolute;
-    top: 70;
+    top: 80px;
     right: 0;
     z-index: 10;
 

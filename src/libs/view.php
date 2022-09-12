@@ -10,10 +10,18 @@ class View
   {
     
     require 'src/views/' . $nombre . '.php';
+    $id ;
+
+    if (!isset( $_SESSION['id_role'])) {
+      $id = 0;
+      return false;
+    }else {
+      $id = $_SESSION['id_role'];
+    }
 
     echo '
       <script>
-        const rol = '. (isset($_SESSION) ?: ""). '
+        const rol = '.  $id. '
       </script>'
     ;
     
