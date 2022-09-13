@@ -5,7 +5,8 @@ article:not(.article_main){
   border:1px solid rgb(231, 231, 231);
   border-radius: 10px;
   height: 100%;
-  max-height: 550px;
+  min-height: 300px;
+      height: min-content;
 
 }
 .s{
@@ -52,6 +53,7 @@ article:not(.article_main):hover>.book-img>.s{
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
+  max-height: 130px;
 }
 
 .book-info p{

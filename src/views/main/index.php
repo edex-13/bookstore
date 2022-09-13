@@ -55,9 +55,9 @@
     </div>
 
   </main>
-    <div class="cover parallax"><p>You are going to fall in love with the food <span>Lorem ipsum dolor sit amet.</span></p></div>
-
+    <div class="cover parallax"><p>Descubre la magia que hay en un libro.</p></div>
   <div class="main">
+    <h2>Libros:</h2>
     <section id="cards_table">
     </section>
   </div>

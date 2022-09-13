@@ -51,7 +51,7 @@ getBooks();
 
 function render(books) {
   let view = "";
-  let view2;
+  let view2 = "";
   books.forEach((book) => {
     view += `
       <article class="book swiper-slide">
