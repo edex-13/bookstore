@@ -16,7 +16,7 @@
   border: 1px solid #dfe0eb;
   border-radius: 8px;
 }
-#books {
+#books , #authors  , #editorials , #invoices  {
   overflow: hidden;
 
   max-width: 1200px;
@@ -24,6 +24,8 @@
   max-height: calc(100% - 65px);
   overflow: auto;
   margin: 20px auto;
+  margin: 30px;
+  padding: 20px;
 }
 
 .section__dataTable > div {

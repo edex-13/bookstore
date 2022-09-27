@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/public/css/main.css">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
@@ -32,6 +35,24 @@
 
         <div id="books"></div>
       </section>
+      <section class="section__dataTable-books">
+        <h2>Lista de autores creados</h2>
+
+
+        <div id="authors"></div>
+      </section>
+      <section class="section__dataTable-books">
+        <h2>Lista de editoriales creadas</h2>
+
+
+        <div id="editorials"></div>
+      </section>
+      <section class="section__dataTable-books">
+        <h2>Lista de facturas creadas</h2>
+
+
+        <div id="invoices"></div>
+      </section>
     </div>
 
   </main>
@@ -39,7 +60,7 @@
   <script src="/public/js/utils/data.js"></script>
   <script src="/public/js/utils/rol.js"></script>
 
-  <script src="/public/js/books.js"></script>
+  <script src="/public/js/admin.js"></script>
 </body>
 
 </html>

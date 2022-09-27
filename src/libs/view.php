@@ -8,21 +8,21 @@ class View
 
   public function render($nombre)
   {
-    
-    $id ;
 
-    if (!isset( $_SESSION['id_role'])) {
+    $id;
+
+    if (!isset($_SESSION['id_role'])) {
       $id = 0;
-    }else {
+    } else {
       $id = $_SESSION['id_role'];
     }
 
     echo '
-      <script>
-        const rol = '.  $id. '
-      </script>'
-    ;
-    require 'src/views/' . $nombre . '.php';
     
+
+      <script>
+        const rol = ' .  $id . '
+      </script>';
+    require 'src/views/' . $nombre . '.php';
   }
 }

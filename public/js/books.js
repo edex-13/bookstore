@@ -52,9 +52,7 @@ const $autors = document.getElementById("authors");
 const $books = document.getElementById("books");
 
 async function getEditorials() {
-  const editorials = await getData(
-    "/editorials/showData"
-  );
+  const editorials = await getData("/editorials/showData");
   if (authors.length > 0 && !editorials.error) {
     appendSelect(editorials, $editorials, "Seleccione una editorial");
   }
@@ -80,7 +78,6 @@ async function crateBook() {
   await setData("/books/create/", data);
   getBooks();
   $form.reset();
-
 }
 
 async function getBooks() {
@@ -129,6 +126,7 @@ async function updateBook(id) {
 }
 
 function renderDataTable(data) {
+
   let view = `<section class="main_sections">
             <div>Titulo</div>
             <div>Id</div>
@@ -169,8 +167,8 @@ function renderDataTable(data) {
        
        <div class="no"> 
        ${
-          validateRole("update")
-            ? `
+         validateRole("update")
+           ? `
           
             <button class="icon-update icon "  onclick="update(
               '${book.id}',
@@ -182,8 +180,8 @@ function renderDataTable(data) {
               '${book.description}',
             )"></button>
           `
-            : ""
-        }
+           : ""
+       }
         ${
           validateRole("delete")
             ? `<button class="icon-delete icon " onclick="deleteBook('${book.id}')"></button>`
@@ -198,6 +196,8 @@ function renderDataTable(data) {
     })
     .join("");
 
-    view += "</section>";
+  view += "</section>";
+  
+
   $books.innerHTML = view;
 }
