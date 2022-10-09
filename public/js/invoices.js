@@ -1,5 +1,5 @@
 const $form = document.getElementById("form-invoice");
-const $books = document.getElementById("books");
+const $books = document.getElementById("booksSelect");
 const $invoices = document.getElementById("invoices");
 
 const appendSelect = (data, input, text) => {

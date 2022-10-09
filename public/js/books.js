@@ -47,8 +47,8 @@ if (validateRole("create")) {
 getBooks();
 
 const $form = document.getElementById("form-book");
-const $editorials = document.getElementById("editorials");
-const $autors = document.getElementById("authors");
+const $editorials = document.getElementById("editorialsSelect");
+const $autors = document.getElementById("authorsSelect");
 const $books = document.getElementById("books");
 
 async function getEditorials() {
