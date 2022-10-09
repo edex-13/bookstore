@@ -25,7 +25,7 @@
           </label>
           <label for="book">
             Libros:
-            <select name="book" id="books">
+            <select name="book" id="booksSelect">
               <option value="">Seleccione un libro</option>
             </select>
           </label>

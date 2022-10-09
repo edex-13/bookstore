@@ -21,13 +21,13 @@ if (validateRole("create")) {
       <div class="form-groud">
       <label for="editorials">
         Editorial:
-        <select name="editorials" id="editorials">
+        <select name="editorials" id="editorialsSelect">
           <option value="">Seleccione una editorial</option>
         </select>
       </label>
       <label for="authors">
         Autor:
-        <select name="authors" id="authors">
+        <select name="authors" id="authorsSelect">
           <option value="">Seleccione un autor</option>
         </select>
       </label>

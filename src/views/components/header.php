@@ -220,6 +220,7 @@ if (!isset($_SESSION)) {
       <li><a href="/editorials">Editorial</a></li>
       <li><a href="/invoices">Facturas</a></li>
       <li><a href="/admin">Admin</a></li>
+      <li><a href="/admin/report">Reporte</a></li>
 
     <?php else : ?>
       <li><a class="diferetente" href="/auth/">Iniciar Sesion</a></li>
@@ -262,6 +263,7 @@ if (!isset($_SESSION)) {
           <li><a href="/editorials">Editorial</a></li>
           <li><a href="/invoices">Facturas</a></li>
           <li><a href="/admin">Admin</a></li>
+          <li><a href="/admin/report">Reporte</a></li>
 
         <?php else : ?>
           <li><a class="diferetente" href="/auth/">Iniciar Sesion</a></li>
